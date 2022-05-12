@@ -27,7 +27,8 @@ export function TaskList(props: Task) {
         title: newTaskTitle,
         isComplete: false,
       }
-
+    
+    setTasks([...tasks, newTask])
 
     } else {
       console.log('não tem task')      
