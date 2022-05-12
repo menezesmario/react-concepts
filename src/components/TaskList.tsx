@@ -10,13 +10,30 @@ interface Task {
   isComplete: boolean;
 }
 
-export function TaskList() {
+export function TaskList(props: Task) {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
   function handleCreateNewTask() {
     // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
+
+    const date = new Date();
+
+    const newId = ` ${date.getMonth()+1}${date.getDate()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}${date.getMilliseconds()}`;
+
+    if(newTaskTitle) {
+      const newTask = {
+        id: parseInt(newId),
+        title: newTaskTitle,
+        isComplete: false,
+      }
+
+
+    } else {
+      console.log('não tem task')      
+    }
   }
+
 
   function handleToggleTaskCompletion(id: number) {
     // Altere entre `true` ou `false` o campo `isComplete` de uma task com dado ID
